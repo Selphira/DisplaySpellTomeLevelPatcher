@@ -70,8 +70,8 @@ namespace DisplaySpellTomeLevelPatcher
 
         public static string GetSpellNameFromScroll(string scrollName)
         {
-            string[] splitScrollName = scrollName.Split(' ');
-            string scrollSpellName = string.Join(' ', splitScrollName.Skip(2).ToArray());
+            string[] splitScrollName = scrollName.Split(' - ');
+            string scrollSpellName = string.Join(' - ', splitScrollName.Skip(2).ToArray());
             return scrollSpellName;
         }
         public static bool NamedFieldsContain<TMajor>(TMajor named, string str)
