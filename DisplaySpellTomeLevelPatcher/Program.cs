@@ -60,7 +60,7 @@ namespace DisplaySpellTomeLevelPatcher
         {
             try
             {
-                return spellTomeName.Split("- ")[1];
+                return spellTomeName.Split(" - ")[1];
             }
             catch (IndexOutOfRangeException)
             {
