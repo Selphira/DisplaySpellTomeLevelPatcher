@@ -30,18 +30,18 @@ namespace DisplaySpellTomeLevelPatcher
         public static readonly HashSet<string> skillLevels = new HashSet<string>() {
             "Novice",
             "Apprenti",
-            "Major",
+            "Majority",
             "Expert",
-            "Master"
+            "Mastery"
         };
 
         public static readonly HashSet<string> magicSchools = new HashSet<string>()
         {
-            "Guérison",
+            "Guerison",
             "Destruction",
             "Conjuration",
             "Illusion",
-            "Altération"
+            "Alteration"
         };
 
         public const string levelFormatVariable = "<level>";
@@ -70,8 +70,8 @@ namespace DisplaySpellTomeLevelPatcher
 
         public static string GetSpellNameFromScroll(string scrollName)
         {
-            string[] splitScrollName = scrollName.Split(' ');
-            string scrollSpellName = string.Join(' ', splitScrollName.Skip(2).ToArray());
+            string[] splitScrollName = scrollName.Split(" - ");
+            string scrollSpellName = string.Join(" - ", splitScrollName.Skip(2).ToArray());
             return scrollSpellName;
         }
         public static bool NamedFieldsContain<TMajor>(TMajor named, string str)
