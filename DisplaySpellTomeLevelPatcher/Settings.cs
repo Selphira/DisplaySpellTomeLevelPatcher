@@ -9,7 +9,7 @@ namespace DisplaySpellTomeLevelPatcher
 {
     public class Settings
     {
-        [SynthesisTooltip(@"Specify your own format here! Available variables: <level> (ex. Adept), <spell> (ex. Clairvoyance), <plugin> (ex. Skyrim), <school> (ex. Alteration). Default: Spell Tome (<level>): <spell>")]
-        public string Format { get; set; } = "Spell Tome (<level>): <spell>";
+        [SynthesisTooltip(@"Choisissez votre propre format ici ! Les variables disponibles sont : <level> (ex. Adepte), <spell> (ex. Clairvoyance), <plugin> (ex. Skyrim), <school> (ex. Altération). Le format par défaut est : Livre de sort (<level>) - <spell>")]
+        public string Format { get; set; } = "Livre de sort (<level>) - <spell>";
     }
 }

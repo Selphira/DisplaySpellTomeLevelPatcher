@@ -29,19 +29,19 @@ namespace DisplaySpellTomeLevelPatcher
 
         public static readonly HashSet<string> skillLevels = new HashSet<string>() {
             "Novice",
-            "Apprentice",
-            "Adept",
+            "Apprenti",
+            "Adepte",
             "Expert",
-            "Master"
+            "Maître"
         };
 
         public static readonly HashSet<string> magicSchools = new HashSet<string>()
         {
-            "Restoration",
+            "Guérison",
             "Destruction",
             "Conjuration",
             "Illusion",
-            "Alteration"
+            "Altération"
         };
 
         public const string levelFormatVariable = "<level>";
@@ -53,7 +53,7 @@ namespace DisplaySpellTomeLevelPatcher
 
         public static string GenerateScrollName(string scrollName, string level)
         {
-            return scrollName.Replace("Scroll of", $"Scroll ({level}):");
+            return scrollName.Replace("Parchemin -", $"Parchemin ({level}) -");
         }
 
         public static string GetSpellNameFromSpellTome(string spellTomeName)
