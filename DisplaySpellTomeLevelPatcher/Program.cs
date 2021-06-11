@@ -30,9 +30,9 @@ namespace DisplaySpellTomeLevelPatcher
         public static readonly HashSet<string> skillLevels = new HashSet<string>() {
             "Novice",
             "Apprenti",
-            "Adepte",
+            "Major",
             "Expert",
-            "Maitre"
+            "Master"
         };
 
         public static readonly HashSet<string> magicSchools = new HashSet<string>()
