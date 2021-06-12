@@ -29,8 +29,8 @@ namespace DisplaySpellTomeLevelPatcher
 
         public static readonly HashSet<string> skillLevels = new HashSet<string>() {
             "Novice",
-            "Apprenti",
-            "Adepte",
+            "Apprentice",
+            "Adept",
             "Expert",
             "Master"
         };
@@ -53,14 +53,14 @@ namespace DisplaySpellTomeLevelPatcher
 
         public static string GenerateScrollName(string scrollName, string level)
         {
-            return scrollName.Replace("Parchemin -", $"Parchemin ({level}) -");
+            return scrollName.Replace("Scroll of", $"Scroll ({level}):");
         }
 
         public static string GetSpellNameFromSpellTome(string spellTomeName)
         {
             try
             {
-                return spellTomeName.Split(" - ")[1];
+                return spellTomeName.Split(": ")[1];
             }
             catch (IndexOutOfRangeException)
             {
@@ -70,7 +70,7 @@ namespace DisplaySpellTomeLevelPatcher
 
         public static string GetSpellNameFromScroll(string scrollName)
         {
-            string[] splitScrollName = scrollName.Split('  ');
+            string[] splitScrollName = scrollName.Split(' ');
             string scrollSpellName = string.Join(' ', splitScrollName.Skip(2).ToArray());
             return scrollSpellName;
         }
