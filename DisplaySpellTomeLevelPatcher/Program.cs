@@ -30,18 +30,18 @@ namespace DisplaySpellTomeLevelPatcher
         public static readonly HashSet<string> skillLevels = new HashSet<string>() {
             "Novice",
             "Apprenti",
-            "Adept",
+            "Adepte",
             "Expert",
-            "Mastery"
+            "Master"
         };
 
         public static readonly HashSet<string> magicSchools = new HashSet<string>()
         {
-            "Guérison",
+            "Restoration",
             "Destruction",
             "Conjuration",
             "Illusion",
-            "Altération"
+            "Alteration"
         };
 
         public const string levelFormatVariable = "<level>";
@@ -53,14 +53,14 @@ namespace DisplaySpellTomeLevelPatcher
 
         public static string GenerateScrollName(string scrollName, string level)
         {
-            return scrollName.Replace("Parchemin -", $"Parchemin ({level}) -");
+            return scrollName.Replace("Scroll of", $"Scroll ({level}):");
         }
 
         public static string GetSpellNameFromSpellTome(string spellTomeName)
         {
             try
             {
-                return spellTomeName.Split(": ")[1];
+                return spellTomeName.Split(" - ")[1];
             }
             catch (IndexOutOfRangeException)
             {
@@ -70,8 +70,8 @@ namespace DisplaySpellTomeLevelPatcher
 
         public static string GetSpellNameFromScroll(string scrollName)
         {
-            string[] splitScrollName = scrollName.Split(" - ");
-            string scrollSpellName = string.Join(" - ", splitScrollName.Skip(2).ToArray());
+            string[] splitScrollName = scrollName.Split(' ');
+            string scrollSpellName = string.Join(' ', splitScrollName.Skip(2).ToArray());
             return scrollSpellName;
         }
         public static bool NamedFieldsContain<TMajor>(TMajor named, string str)
