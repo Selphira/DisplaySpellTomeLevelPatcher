@@ -30,18 +30,18 @@ namespace DisplaySpellTomeLevelPatcher
         public static readonly HashSet<string> skillLevels = new HashSet<string>() {
             "Novice",
             "Apprenti",
-            "Majority",
+            "Adept",
             "Expert",
             "Mastery"
         };
 
         public static readonly HashSet<string> magicSchools = new HashSet<string>()
         {
-            "Guerison",
+            "Guérison",
             "Destruction",
             "Conjuration",
             "Illusion",
-            "Alteration"
+            "Altération"
         };
 
         public const string levelFormatVariable = "<level>";
