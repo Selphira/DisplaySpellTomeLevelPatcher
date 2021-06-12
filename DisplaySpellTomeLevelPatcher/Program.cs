@@ -32,7 +32,7 @@ namespace DisplaySpellTomeLevelPatcher
 			"Apprenti",
             "Adepte",
             "Expert",
-            "Master"
+            "Maitre"
         };
 
         public static readonly HashSet<string> magicSchools = new HashSet<string>()
