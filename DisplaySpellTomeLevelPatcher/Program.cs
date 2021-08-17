@@ -28,12 +28,19 @@ namespace DisplaySpellTomeLevelPatcher
         public static ModKey Vokrii = ModKey.FromNameAndExtension("Vokrii - Minimalistic Perks of Skyrim.esp");
 
         public static readonly HashSet<string> skillLevels = new HashSet<string>() {
-            "Novice",
-			"Apprenti",
-            "Adepte",
+  	    "Novice",
+            "Apprentice",
+            "Adept",
             "Expert",
             "Master"
-        };
+         };
+	public static readonly string[] skillLevelTranslations = new string[5] {
+	  "Novice",
+	  "Apprenti",
+	  "Adepte",
+	  "Expert",
+	  "Maître"
+	};
 
         public static readonly HashSet<string> magicSchools = new HashSet<string>()
         {
@@ -112,15 +119,17 @@ namespace DisplaySpellTomeLevelPatcher
                 bool changed = false;
                 if (bookName.Contains(levelFormatVariable))
                 {
+                    int i = -1;
                     foreach (string skillLevel in skillLevels)
                     {
+                        i++;
                         if (halfCostPerkContext.ModKey == Vokrii && halfCostPerk.Description != null)
                         {
                             if (!DescriptionContain(halfCostPerk, skillLevel)) continue;
                         }
                         else if (!NamedFieldsContain(halfCostPerk, skillLevel)) continue;
 
-                        bookName = bookName.Replace(levelFormatVariable, skillLevel);
+                        bookName = bookName.Replace(levelFormatVariable, skillLevelTranslations[i]);
                         changed = true;
                         break;
                     }
