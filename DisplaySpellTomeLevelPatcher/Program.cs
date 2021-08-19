@@ -163,6 +163,8 @@ namespace DisplaySpellTomeLevelPatcher
                     bookName = bookName.Replace(spellFormatVariable, GetSpellNameFromSpellTome(book.Name.String));
                     changed = true;
                 }
+		byte[] bytes = Encoding.Default.GetBytes(bookName);
+		bookName = Encoding.UTF8.GetString(bytes);
                 if (changed && book.Name.String != bookName)
                 {
                     Book bookToAdd = book.DeepCopy();
