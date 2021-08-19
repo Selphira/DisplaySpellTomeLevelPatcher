@@ -97,6 +97,9 @@ namespace DisplaySpellTomeLevelPatcher
 
         public static void RunPatch(IPatcherState<ISkyrimMod, ISkyrimModGetter> state)
         {
+		Encoding wind1252 = Encoding.GetEncoding(1252);
+		Encoding utf8 = Encoding.UTF8;
+		
             foreach (var bookContext in state.LoadOrder.PriorityOrder.Book().WinningContextOverrides())
             {
                 IBookGetter book = bookContext.Record;
@@ -112,6 +115,8 @@ namespace DisplaySpellTomeLevelPatcher
                 string spellName = GetSpellNameFromSpellTome(i18nBookName.String);
                 if (spellName == "")
                 {
+		    var utf8Bytes = utf8.getBytes(i18nBookName)
+		    i18nBookName = wind1252.GetString(utf8Bytes);
                     Console.WriteLine($"{book.FormKey}: Could not get spell name from: {i18nBookName.String}");
                     continue;
                 }
@@ -175,7 +180,6 @@ namespace DisplaySpellTomeLevelPatcher
             foreach (var scroll in state.LoadOrder.PriorityOrder.Scroll().WinningOverrides())
             {
                 if (scroll.Name?.String == null) continue;
-
                 string scrollSpellName = GetSpellNameFromScroll(scroll.Name.String);
                 if (spellLevelDictionary.TryGetValue(scrollSpellName, out var skillLevel))
                 {
