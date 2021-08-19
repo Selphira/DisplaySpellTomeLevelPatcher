@@ -101,7 +101,7 @@ namespace DisplaySpellTomeLevelPatcher
             {
                 IBookGetter book = bookContext.Record;
 
-                if (i18nBookName?.String == null) continue;
+                if (book.Name?.String == null) continue;
                 if (!book.Keywords?.Contains(Skyrim.Keyword.VendorItemSpellTome) ?? true) continue;
                 if (book.Teaches is not IBookSpellGetter teachedSpell) continue;
                 if (!teachedSpell.Spell.TryResolve(state.LinkCache, out var spell)) continue;
