@@ -66,7 +66,9 @@ namespace DisplaySpellTomeLevelPatcher
 
         public static string GetSpellNameFromSpellTome(string spellTomeName)
         {
-            return spellTomeName.Split(" - ")[1];
+            try
+            {
+                return spellTomeName.Split(" - ")[1];
             }
             catch (IndexOutOfRangeException)
             {
