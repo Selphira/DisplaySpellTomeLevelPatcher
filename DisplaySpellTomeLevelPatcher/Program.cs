@@ -66,12 +66,7 @@ namespace DisplaySpellTomeLevelPatcher
 
         public static string GetSpellNameFromSpellTome(string spellTomeName)
         {
-            try
-            {
-                 if (spellTomeName.Contains(" - ")) {
-  			return spellTomeName.Split(" - ")[1];
-			}
-		return spellTomeName.Split(": ")[1];
+            return spellTomeName.Split(" - ")[1];
             }
             catch (IndexOutOfRangeException)
             {
@@ -104,21 +99,18 @@ namespace DisplaySpellTomeLevelPatcher
             {
                 IBookGetter book = bookContext.Record;
 
-                if (book.Name?.String == null) continue;
+                if (i18nBookName?.String == null) continue;
                 if (!book.Keywords?.Contains(Skyrim.Keyword.VendorItemSpellTome) ?? true) continue;
                 if (book.Teaches is not IBookSpellGetter teachedSpell) continue;
                 if (!teachedSpell.Spell.TryResolve(state.LinkCache, out var spell)) continue;
                 if (!state.LinkCache.TryResolveContext(spell.HalfCostPerk.FormKey, spell.HalfCostPerk.Type, out var halfCostPerkContext)) continue;
                 var halfCostPerk = (IPerkGetter)halfCostPerkContext.Record;
                 if (halfCostPerk == null) continue;
-if (book.Name.TryLookup(Language.French, out var i18nBookName))
-{
-    System.Console.WriteLine($"French name: {i18nBookName}");
-}
-                string spellName = GetSpellNameFromSpellTome(book.Name.String);
+
+                string spellName = GetSpellNameFromSpellTome(i18nBookName.String);
                 if (spellName == "")
                 {
-                    Console.WriteLine($"{book.FormKey}: Could not get spell name from: {book.Name.String}");
+                    Console.WriteLine($"{book.FormKey}: Could not get spell name from: {i18nBookName.String}");
                     continue;
                 }
 
@@ -164,12 +156,12 @@ if (book.Name.TryLookup(Language.French, out var i18nBookName))
                 }
                 if (bookName.Contains(spellFormatVariable))
                 {
-                    bookName = bookName.Replace(spellFormatVariable, GetSpellNameFromSpellTome(book.Name.String));
+                    bookName = bookName.Replace(spellFormatVariable, GetSpellNameFromSpellTome(i18nBookName.String));
                     changed = true;
                 }
 		byte[] bytes = Encoding.Default.GetBytes(bookName);
 		bookName = Encoding.UTF8.GetString(bytes);
-                if (changed && book.Name.String != bookName)
+                if (changed && i18nBookName.String != bookName)
                 {
                     Book bookToAdd = book.DeepCopy();
                     bookToAdd.Name = bookName;
