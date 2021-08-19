@@ -101,7 +101,7 @@ namespace DisplaySpellTomeLevelPatcher
             {
                 IBookGetter book = bookContext.Record;
 
-                if (book.Name?.String == null) continue;
+                if (i18nBookName?.String == null) continue;
                 if (!book.Keywords?.Contains(Skyrim.Keyword.VendorItemSpellTome) ?? true) continue;
                 if (book.Teaches is not IBookSpellGetter teachedSpell) continue;
                 if (!teachedSpell.Spell.TryResolve(state.LinkCache, out var spell)) continue;
@@ -111,7 +111,8 @@ namespace DisplaySpellTomeLevelPatcher
 
                 string spellName = GetSpellNameFromSpellTome(i18nBookName.String);
                 if (spellName == "")
-                {
+                book.Name.TryLookup(Language.French, out var i18nBookName)
+		{
                     Console.WriteLine($"{book.FormKey}: Could not get spell name from: {i18nBookName.String}");
                     continue;
                 }
