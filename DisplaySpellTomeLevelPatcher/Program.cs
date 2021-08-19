@@ -70,7 +70,7 @@ namespace DisplaySpellTomeLevelPatcher
                  if spellTomeName.Contains(" - ") {
                     return spellTomeName.Split(" - ")[1];
                 }
-                return spellTomeName.Split(": ")[1];;
+                return spellTomeName.Split(": ")[1];
             }
             catch (IndexOutOfRangeException)
             {
