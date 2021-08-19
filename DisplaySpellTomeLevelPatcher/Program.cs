@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.IO;
 using System.Text.RegularExpressions;
 using System.Collections.Immutable;
+using System.Text;
 
 namespace DisplaySpellTomeLevelPatcher
 {
