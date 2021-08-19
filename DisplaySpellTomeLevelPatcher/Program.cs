@@ -111,7 +111,10 @@ namespace DisplaySpellTomeLevelPatcher
                 if (!state.LinkCache.TryResolveContext(spell.HalfCostPerk.FormKey, spell.HalfCostPerk.Type, out var halfCostPerkContext)) continue;
                 var halfCostPerk = (IPerkGetter)halfCostPerkContext.Record;
                 if (halfCostPerk == null) continue;
-
+if (book.Name.TryLookup(Language.French, out var i18nBookName))
+{
+    System.Console.WriteLine($"French name: {i18nBookName}");
+}
                 string spellName = GetSpellNameFromSpellTome(book.Name.String);
                 if (spellName == "")
                 {
