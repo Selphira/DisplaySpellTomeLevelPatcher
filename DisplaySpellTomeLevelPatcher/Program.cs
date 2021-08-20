@@ -52,10 +52,6 @@ namespace DisplaySpellTomeLevelPatcher
 
         public static Dictionary<string, string> spellLevelDictionary = new Dictionary<string, string>();
 
-        /*{
-            return scrollName.Replace("Scroll of", $"Scroll ({level}):");
-        }*/
-
         public static string GetSpellNameFromSpellTome(string spellTomeName)
         {
             try
@@ -184,44 +180,6 @@ namespace DisplaySpellTomeLevelPatcher
                     state.PatchMod.Books.Set(bookToAdd);
                 }
             }
-
-            /*
-            foreach (var scroll in state.LoadOrder.PriorityOrder.Scroll().WinningOverrides())
-            {
-                if (scroll.Name?.String == null) continue;
-
-                string scrollSpellName = GetSpellNameFromScroll(scroll.Name.String);
-                if (spellLevelDictionary.TryGetValue(scrollSpellName, out var skillLevel))
-                {
-                    Scroll scrollToAdd = scroll.DeepCopy();
-                    scrollToAdd.Name = GenerateScrollName(scroll.Name.String, skillLevel);
-                    state.PatchMod.Scrolls.Set(scrollToAdd);
-                }
-            }
-            */
         }
-            
-        public static void convertEncoding(string text)
-        {
-            // Create two different encodings.
-            Encoding ascii = Encoding.ASCII;
-            Encoding unicode = Encoding.Unicode;
-
-            // Convert the string into a byte array.
-            byte[] unicodeBytes = unicode.GetBytes(text);
-
-            // Perform the conversion from one encoding to the other.
-            byte[] asciiBytes = Encoding.Convert(unicode, ascii, unicodeBytes);
-
-            // Convert the new byte[] into a char[] and then into a string.
-            char[] asciiChars = new char[ascii.GetCharCount(asciiBytes, 0, asciiBytes.Length)];
-            ascii.GetChars(asciiBytes, 0, asciiBytes.Length, asciiChars, 0);
-            string asciiString = new string(asciiChars);
-
-            // Display the strings created before and after the conversion.
-            Console.WriteLine("Original string: {0}", text);
-            Console.WriteLine("Ascii converted string: {0}", asciiString);
-        }
-
     }
 }
