@@ -173,10 +173,10 @@ namespace DisplaySpellTomeLevelPatcher
 
                     Book bookToAdd = book.DeepCopy();
                     bookToAdd.Name = bookName;
-                    bookToAdd.Description = Encoding.GetEncoding("ISO-8859-1").GetString(Encoding.UTF8.GetBytes(i18nBookDescription ?? ""));
-                    bookToAdd.BookText = Encoding.GetEncoding("ISO-8859-1").GetString(Encoding.UTF8.GetBytes(i18nBookText ?? ""));
+                    bookToAdd.Description = i18nBookDescription;
+                    bookToAdd.BookText = i18nBookText;
 
-                    Console.WriteLine($"{book.FormKey}: Traduction: {i18nBookName} : {bookName} {i18nBookText}");
+                    Console.WriteLine($"{book.FormKey}: Traduction: {i18nBookName} : {bookName} : {i18nBookText}");
                     state.PatchMod.Books.Set(bookToAdd);
                 }
             }
