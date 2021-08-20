@@ -168,6 +168,7 @@ namespace DisplaySpellTomeLevelPatcher
                 {
                     string i18nBookDescription = null;
                     string i18nBookText = null;
+                    string testBookText = book.BookText;
                     book.Description?.TryLookup(Language.French, out i18nBookDescription);
                     book.BookText?.TryLookup(Language.French, out i18nBookText);
 
@@ -176,7 +177,7 @@ namespace DisplaySpellTomeLevelPatcher
                     bookToAdd.Description = i18nBookDescription;
                     bookToAdd.BookText = i18nBookText;
 
-                    Console.WriteLine($"{book.FormKey}: Traduction: {i18nBookName} : {bookName} : {i18nBookText}");
+                    Console.WriteLine($"{book.FormKey}: Traduction: {i18nBookName} : {bookName} : {i18nBookText} : {testBookText}");
                     state.PatchMod.Books.Set(bookToAdd);
                 }
             }
