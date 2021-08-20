@@ -168,7 +168,7 @@ namespace DisplaySpellTomeLevelPatcher
                 {
                     string i18nBookDescription = null;
                     string i18nBookText = null;
-                    string testBookText = book.BookText;
+                    string testBookText = book.BookText?.String;
                     book.Description?.TryLookup(Language.French, out i18nBookDescription);
                     book.BookText?.TryLookup(Language.French, out i18nBookText);
 
