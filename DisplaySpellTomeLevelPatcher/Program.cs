@@ -176,7 +176,7 @@ namespace DisplaySpellTomeLevelPatcher
                     bookToAdd.Description = i18nBookDescription ?? book.Description.String;
                     bookToAdd.BookText = i18nBookText ?? book.BookText.String;
 
-                    Console.WriteLine($"{book.FormKey}: Traduction: {i18nBookName} : {bookName} : {i18nBookText} : {bookToAdd.BookText.String}");
+                    Console.WriteLine($"{book.FormKey}: {bookName} : {bookToAdd.BookText.String}");
                     state.PatchMod.Books.Set(bookToAdd);
                 }
             }
