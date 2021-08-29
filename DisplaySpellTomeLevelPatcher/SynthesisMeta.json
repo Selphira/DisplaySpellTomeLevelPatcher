@@ -1,5 +1,5 @@
 {
-  "Nickname": "DisplaySpellTomeLevelPatcher",
+  "Nickname": "DisplaySpellTomeLevelPatcher - FR",
   "Visibility": "Visible",
   "OneLineDescription": "Custom formatting options for the naming of your Spell Tomes, including level, magic school, plugin name & spell name",
   "LongDescription": "Automatically patch your entire load order to show the skill level on all Spell Tomes! You can change the default format from Spell Tome (<level>): <spell> to any custom format including plugin name & magic school in the settings!",
